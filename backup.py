@@ -42,13 +42,13 @@ class myHandler(FileSystemEventHandler):
                 print(f"Moved {filename} to {RAR}")
 
 
-DOWNLOADS = "c:/users/guydo/downloads"
-DOCUMENTS = "c:/users/guydo/documents"
-MUSIC = "c:/users/guydo/music"
-VIDEO = "c:/users/guydo/video"
-IMGS = "c:/users/guydo/pictures"
-EXE = "c:/users/guydo/exe"
-RAR = "c:/users/guydo/rar"
+DOWNLOADS = "c:/users/username/downloads"
+DOCUMENTS = "c:/users/username/documents"
+MUSIC = "c:/users/username/music"
+VIDEO = "c:/users/username/video"
+IMGS = "c:/users/username/pictures"
+EXE = "c:/users/username/exe" # create this folder in c:/users/youruser
+RAR = "c:/users/username/rar" # create this folder in c:/users/youruser
 event_handler = myHandler()
 observer = Observer()
 observer.schedule(event_handler, DOWNLOADS, recursive=True)
