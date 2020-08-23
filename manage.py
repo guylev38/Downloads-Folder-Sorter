@@ -9,7 +9,7 @@ print("Press CTRL+C to stop the program")
 class myHandler(FileSystemEventHandler):
     def on_modified(self, event):
         for filename in os.listdir(DOWNLOADS):
-            if filename.endswith(".docx") or filename.endswith(".pdf") or filename.endswith(".csv") or filename.endswith(".txt"):
+            if filename.endswith(".docx") or filename.endswith(".pdf") or filename.endswith(".csv") or filename.endswith(".txt") or filename.endswith(".doc"):
                 fileD = DOWNLOADS + "/" + filename
                 newD = DOCUMENTS + "/" + filename
                 os.rename(fileD, newD)
@@ -19,13 +19,12 @@ class myHandler(FileSystemEventHandler):
                 newM = MUSIC + "/" + filename
                 os.rename(fileM, newM)
                 print(f"Moved {filename} to {MUSIC}")
-            elif filename.endswith(".mp4") or filename.endswith(".mkv") or filename.endswith(
-                    ".avi") or filename.endswith(".amv"):
+            elif filename.endswith(".mp4") or filename.endswith(".mkv") or filename.endswith(".avi") or filename.endswith(".amv"):
                 fileV = DOWNLOADS + "/" + filename
                 newV = VIDEO + "/" + filename
                 os.rename(fileV, newV)
                 print(f"Moved {filename} to {VIDEO}")
-            elif filename.endswith(".png") or filename.endswith(".jpg"):
+            elif filename.endswith(".png") or filename.endswith(".jpg") or filename.endswith(".jpeg"):
                 fileI = DOWNLOADS + "/" + filename
                 newI = IMGS + "/" + filename
                 os.rename(fileI, newI)
@@ -35,20 +34,24 @@ class myHandler(FileSystemEventHandler):
                 newE = EXE + "/" + filename
                 os.rename(fileE, newE)
                 print(f"Moved {filename} to {EXE}")
-            elif filename.endswith(".rar") or filename.endswith(".zip"):
+            elif filename.endswith(".rar") or filename.endswith(".zip") or filename.endswith(".7z") or filename.endswith(".torrent"):
                 fileR = DOWNLOADS + "/" + filename
                 newR = RAR + "/" + filename
                 os.rename(fileR, newR) 
                 print(f"Moved {filename} to {RAR}")
-
-
-DOWNLOADS = "c:/users/guydo/downloads"
-DOCUMENTS = "c:/users/guydo/documents"
-MUSIC = "c:/users/guydo/music"
-VIDEO = "c:/users/guydo/video"
-IMGS = "c:/users/guydo/pictures"
-EXE = "c:/users/guydo/exe"
-RAR = "c:/users/guydo/rar"
+            else:
+                fileO = DOWNLOADS + "/" + filename
+                newO = OTHER + "/" + filename
+                os.rename(fileO, newO)
+                print(f"Moved {filename} to {OTHER}")
+DOWNLOADS = "c:/users/mayoto/downloads"
+DOCUMENTS = "c:/users/mayoto/documents"
+MUSIC = "c:/users/mayoto/music"
+VIDEO = "c:/users/mayoto/videos"
+IMGS = "c:/users/mayoto/pictures"
+EXE = "c:/users/mayoto/exe"
+RAR = "c:/users/mayoto/rar"
+OTHER = "c:/users/mayoto/other"
 event_handler = myHandler()
 observer = Observer()
 observer.schedule(event_handler, DOWNLOADS, recursive=True)
@@ -59,5 +62,5 @@ try:
         time.sleep(10)
 except KeyboardInterrupt:
     observer.stop()
-    print("stopped")
+    print("Program Terminated")
 observer.join()
