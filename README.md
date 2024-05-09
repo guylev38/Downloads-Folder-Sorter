@@ -1,3 +1,3 @@
 # Downloads-Folder-Sorter
-A Python Program That Moves The Files To The Right Folder By His Extension And Keeps The Downloads Folder Clean And Sorted
-**DISCALIMER: NEEDS SERIOUS REWORK IT AIN'T WORKING**
+A python program that sorts the downloads folder into subfolders depending on file extension (e.g. .exe to "EXE" and .docx or .pdf to "Documents") 
+**ATTENTION: NEEDS REWORK AND REFACTORING, IT DOESN'T WORK AT THE MOMENT**
